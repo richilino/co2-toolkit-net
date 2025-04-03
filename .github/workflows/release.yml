@@ -32,6 +32,7 @@ jobs:
       uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4.3.1
       with:
         dotnet-version: 8.0.x
+        source-url: https://api.nuget.org/v3/index.json
         
     - name: Restore dependencies
       run: dotnet restore CO2Toolkit/CO2Toolkit.sln
@@ -57,7 +58,7 @@ jobs:
         subject-path: 'CO2Toolkit/bin/Release/*.nupkg'
     
     - name: Publish the package to nuget.org
-      run: dotnet nuget push CO2Toolkit/bin/Release/*.nupkg -k $NUGET_AUTH_TOKEN -s https://api.nuget.org/v3/index.json
+      run: dotnet nuget push CO2Toolkit/bin/Release/*.nupkg -k $NUGET_AUTH_TOKEN
       env:
         NUGET_AUTH_TOKEN: ${{ secrets.NUGET_TOKEN }}
 

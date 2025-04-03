@@ -44,7 +44,8 @@ jobs:
     - uses: anchore/sbom-action@f325610c9f50a54015d37c8d16cb3b0e2c8f4de0 # v0.18.0
       with:
         path: CO2Toolkit
-        artifact-name: co2-toolkit-net-sbom.spdx
+        format: 'spdx-json'
+        output-file: co2-toolkit-net-sbom.spdx.json
         upload-artifact: true
         upload-release-assets: true
 
@@ -69,7 +70,7 @@ jobs:
     - uses: actions/attest-sbom@115c3be05ff3974bcbd596578934b3f9ce39bf68 # v2.2.0
       with:
         subject-path: 'CO2Toolkit/bin/Release/*.nupkg'
-        sbom-path: co2-toolkit-net-sbom.spdx
+        sbom-path: 'co2-toolkit-net-sbom.spdx.json'
     
     - name: Publish the package to nuget.org
       run: dotnet nuget push CO2Toolkit/bin/Release/*.nupkg -k $NUGET_AUTH_TOKEN --skip-duplicate

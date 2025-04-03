@@ -46,7 +46,7 @@ jobs:
         path: CO2Toolkit
         format: 'spdx-json'
         artifact-name: "co2-toolkit-net.spdx.json"
-        output-file: "${{ github.workspace }}"
+        output-file: "${{ github.workspace }}/co2-toolkit-net.spdx.json"
         upload-artifact: true
         upload-release-assets: true
 

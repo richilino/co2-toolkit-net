@@ -1,8 +1,8 @@
-# CO2Toolkit NuGet Package
+# CO2 Toolkit for DotNet
 
 ## Overview
 
-The **CO2Toolkit** NuGet package provides an easy way to estimate the carbon emissions associated with the consumption of digital content. This package uses the Sustainable WebDesign Model V4 from [Sustainable Web Design](https://sustainablewebdesign.org/estimating-digital-emissions/) to calculate the carbon footprint based on various factors such as the amount of data transferred, the energy efficiency of data centres, networks and user devices, and the carbon intensity of the grid.
+The **CO2Toolkit** NuGet package provides an easy way to estimate the carbon emissions associated with the consumption of digital content. This package uses the Sustainable Web Design Model V4 from [Sustainable Web Design](https://sustainablewebdesign.org/estimating-digital-emissions/) to calculate the carbon footprint based on various factors such as the amount of data transferred, the energy efficiency of data centres, networks and user devices, and the carbon intensity of the grid.
 
 With the growing need for more sustainable digital practices, this package provides a simple and accurate way to estimate the environmental impact of digital assets, making it easier to assess and optimise the carbon emissions associated with web-based applications.
 

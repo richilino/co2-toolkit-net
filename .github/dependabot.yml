@@ -1,0 +1,18 @@
+version: 2
+updates:
+# Enable version updates for github-actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    rebase-strategy: disabled
+    commit-message:
+      prefix: "ci: :construction_worker:"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+    # Enable version updates for nuget 
+  - package-ecosystem: “nuget”
+    directory: “/” 
+    interval: weekly"

@@ -13,6 +13,7 @@ updates:
         patterns:
           - "*"
     # Enable version updates for nuget 
-  - package-ecosystem: “nuget”
+  - package-ecosystem: "nuget"
     directory: “/” 
-    interval: weekly"
+    schedule:
+      interval: weekly"

@@ -46,7 +46,7 @@ jobs:
         path: CO2Toolkit
         format: 'spdx-json'
         artifact-name: "co2-toolkit-net.spdx.json"
-        output-file: "."
+        output-file: "${{ github.workspace }}"
         upload-artifact: true
         upload-release-assets: true
 
@@ -71,7 +71,7 @@ jobs:
     - uses: actions/attest-sbom@115c3be05ff3974bcbd596578934b3f9ce39bf68 # v2.2.0
       with:
         subject-path: 'CO2Toolkit/bin/Release/*.nupkg'
-        sbom-path: "co2-toolkit-net.spdx.json"
+        sbom-path: "${{ github.workspace }}/co2-toolkit-net.spdx.json"
     
     - name: Publish the package to nuget.org
       run: dotnet nuget push CO2Toolkit/bin/Release/*.nupkg -k $NUGET_AUTH_TOKEN --skip-duplicate

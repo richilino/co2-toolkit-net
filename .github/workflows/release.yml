@@ -1,7 +1,7 @@
 # This workflow will build a .NET project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
-name: Releae
+name: Release
 
 on:
   workflow_dispatch: {}
@@ -49,7 +49,6 @@ jobs:
     - uses: actions/attest-build-provenance@c074443f1aee8d4aeeae555aebba3282517141b2 # v2.2.3
       with:
         subject-path: 'CO2Toolkit/bin/Release/*.nupkg'
-        subject-digest: sha256:${{ steps.upload.outputs.artifact-digest }}
     
 #    - name: Publish the package to GPR
 #      run: dotnet nuget push CO2Toolkit/bin/Release/*.nupkg

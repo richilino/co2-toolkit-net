@@ -1,48 +1,52 @@
 ﻿namespace CO2Toolkit
 {
+
     // Using the Sustainable WebDesign Model V4
     // from https://sustainablewebdesign.org/estimating-digital-emissions/
     public sealed class CO2Calculator
     {
         // Constants for operational energy intensities (kWh/GB)
-        private const double OperationalEnergyIntensityDataCenters = 0.055;
-        private const double OperationalEnergyIntensityNetworks = 0.059;
-        private const double OperationalEnergyIntensityUserDevices = 0.080;
+        private const double OPERATIONAL_ENERGY_INTENSITY_DATA_CENTERS = 0.055;
+        private const double OPERATIONAL_ENERGY_INTENSITY_NETWORKS = 0.059;
+        private const double OPERATIONAL_ENERGY_INTENSITY_USER_DEVICES = 0.080;
 
         // Constants for embodied energy intensities (kWh/GB)
-        private const double EmbodiedEnergyIntensityDataCenters = 0.012;
-        private const double EmbodiedEnergyIntensityNetworks = 0.013;
-        private const double EmbodiedEnergyIntensityUserDevices = 0.081;
+        private const double EMBODIED_ENERGY_INTENSITY_DATA_CENTERS = 0.012;
+        private const double EMBODIED_ENERGY_INTENSITY_NETWORKS = 0.013;
+        private const double EMBODIED_ENERGY_INTENSITY_USER_DEVICES = 0.081;
 
-        // Carbon intensity of grid (gCO2e/kWh)
-        private const double GridCarbonIntensity = 494;
+        // Carbon intensity of global grid (gCO2e/kWh)
+        private const double GLOBAL_CARBON_INTENSITY_2021 = 494;
 
         // Configuration values passed through the constructor
         private readonly double _greenHostingFactor;
         private readonly double _newVisitorRatio;
         private readonly double _dataCacheRatio;
+        private readonly Zone _zone;
 
         public CO2Calculator(
             double greenHostingFactor = 0, 
             double newVisitorRatio = 1, 
-            double dataCacheRatio = 0)
+            double dataCacheRatio = 0,
+            Zone zone = null)
         {
             _greenHostingFactor = greenHostingFactor;
             _newVisitorRatio = newVisitorRatio;
             _dataCacheRatio = dataCacheRatio;
+            _zone = zone ?? ZoneRepository.World2023;
         }
 
         public double BytesToEmission(long bytesTransferred)
         {
             var gigabytesTransferred = bytesTransferred / 1_073_741_824.0;
 
-            var opDC = CalculateEmissions(gigabytesTransferred, OperationalEnergyIntensityDataCenters);
-            var opN = CalculateEmissions(gigabytesTransferred, OperationalEnergyIntensityNetworks);
-            var opUD = CalculateEmissions(gigabytesTransferred, OperationalEnergyIntensityUserDevices);
+            var opDC = CalculateOperationalEmissions(gigabytesTransferred, OPERATIONAL_ENERGY_INTENSITY_DATA_CENTERS);
+            var opN = CalculateOperationalEmissions(gigabytesTransferred, OPERATIONAL_ENERGY_INTENSITY_NETWORKS);
+            var opUD = CalculateOperationalEmissions(gigabytesTransferred, OPERATIONAL_ENERGY_INTENSITY_USER_DEVICES);
 
-            var emDC = CalculateEmissions(gigabytesTransferred, EmbodiedEnergyIntensityDataCenters);
-            var emN = CalculateEmissions(gigabytesTransferred, EmbodiedEnergyIntensityNetworks);
-            var emUD = CalculateEmissions(gigabytesTransferred, EmbodiedEnergyIntensityUserDevices);
+            var emDC = CalculateEmbodiedEmissions(gigabytesTransferred, EMBODIED_ENERGY_INTENSITY_DATA_CENTERS);
+            var emN = CalculateEmbodiedEmissions(gigabytesTransferred, EMBODIED_ENERGY_INTENSITY_NETWORKS);
+            var emUD = CalculateEmbodiedEmissions(gigabytesTransferred, EMBODIED_ENERGY_INTENSITY_USER_DEVICES);
 
             var returnVisitorRatio = 1 - _newVisitorRatio;
 
@@ -56,9 +60,14 @@
             return totalEmissionsPerPageView;
         }
 
-        private double CalculateEmissions(double gigabytes, double energyIntensity)
+        private double CalculateOperationalEmissions(double gigabytes, double energyIntensity)
         {
-            return gigabytes * energyIntensity * GridCarbonIntensity;
+            return gigabytes * energyIntensity * _zone.AverageCarbonGridIntensity;
+        }
+
+        private double CalculateEmbodiedEmissions(double gigabytes, double energyIntensity)
+        {
+            return gigabytes * energyIntensity * GLOBAL_CARBON_INTENSITY_2021;
         }
     }
 }

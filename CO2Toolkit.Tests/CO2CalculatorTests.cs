@@ -18,29 +18,29 @@ namespace CO2Toolkit.Tests
         [Test]
         public void TestEmissionsWithStandardConfig()
         {
-            var calculator = new CO2Calculator();
+            var calculator = new CO2Calculator(zone: ZoneRepository.World2021);
 
             var dataTransferredBytes = 1_073_741_824;
             var result = calculator.BytesToEmission(dataTransferredBytes);
 
-            result.Should().BeApproximately(148.2, 0.1);
+            result.Should().BeApproximately(148.3, 0.1);
         }
 
         [Test]
         public void TestEmissionsWithPartialGreenHosting()
         {
-            var calculator = new CO2Calculator(greenHostingFactor: 0.5);
+            var calculator = new CO2Calculator(greenHostingFactor: 0.5, zone: ZoneRepository.World2021);
 
             var dataTransferredBytes = 1_073_741_824;
             var result = calculator.BytesToEmission(dataTransferredBytes);
 
-            result.Should().BeApproximately(134.615, 0.1);
+            result.Should().BeApproximately(134.7, 0.1);
         }
 
         [Test]
         public void TestEmissionsWithGreenHosting()
         {
-            var calculator = new CO2Calculator(greenHostingFactor: 1);
+            var calculator = new CO2Calculator(greenHostingFactor: 1, zone: ZoneRepository.World2021);
 
             var dataTransferredBytes = 1_073_741_824;
             var result = calculator.BytesToEmission(dataTransferredBytes);

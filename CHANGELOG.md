@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Possibility to adjust calculation based on regional energy mix!
+
 ### Changed
 
 - Updated Package Metadata

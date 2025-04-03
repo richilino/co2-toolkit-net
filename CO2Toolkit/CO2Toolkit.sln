@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35919.96 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CO2Toolkit", "CO2Toolkit.csproj", "{321893F2-4D0B-4DCB-AA89-5E61ADC5921C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CO2Toolkit.Tests", "..\CO2Toolkit.Tests\CO2Toolkit.Tests.csproj", "{095A517C-2E4D-47CB-8141-D92C6D8167FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{321893F2-4D0B-4DCB-AA89-5E61ADC5921C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{321893F2-4D0B-4DCB-AA89-5E61ADC5921C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{321893F2-4D0B-4DCB-AA89-5E61ADC5921C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{321893F2-4D0B-4DCB-AA89-5E61ADC5921C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{095A517C-2E4D-47CB-8141-D92C6D8167FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{095A517C-2E4D-47CB-8141-D92C6D8167FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{095A517C-2E4D-47CB-8141-D92C6D8167FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{095A517C-2E4D-47CB-8141-D92C6D8167FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {216FC61C-1173-4798-9B89-76BF244C8F67}
+	EndGlobalSection
+EndGlobal

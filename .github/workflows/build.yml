@@ -30,10 +30,10 @@ jobs:
         dotnet-version: 8.0.x
         
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore CO2Toolkit/CO2Toolkit.sln
       
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build CO2Toolkit/CO2Toolkit.sln --no-restore
       
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test CO2Toolkit/CO2Toolkit.sln --no-build --verbosity normal

@@ -1,7 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <Title>CO2Toolkit</Title>
+    <PackageId>CO2Toolkit</PackageId>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>0.1.0</Version>
+    <Authors>Richard Hegewald</Authors>
+    <PackageTags>CO2; Carbon; Emission</PackageTags>
+    <Description>A simple NuGet package to calculate CO2 emissions during data transfer.</Description>
+    <RepositoryUrl>https://github.com/richilino/co2-toolkit-net</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
+
+
+  <ItemGroup>
+    <None Include="../README.md" Pack="true" PackagePath="\"/>
+    <None Include="../LICENSE.md" Pack="true" PackagePath="\"/>
+</ItemGroup>
 
 </Project>

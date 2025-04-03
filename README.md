@@ -26,7 +26,7 @@ Console.WriteLine($"Estimated CO2 emissions: {emissions} grams");
 
 ## License
 
-This package is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+This package is licensed under the MIT License. See the [LICENSE](LICENSE.md) file for more details.
 
 ## Contributions
 

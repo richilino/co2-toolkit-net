@@ -3,18 +3,18 @@
     public sealed class Zone
     {
         public string ThreeLetterCode { get; }
-        public string ZoneName { get; }
+        public string Name { get; }
         public float AverageCarbonGridIntensity { get; }
         public uint Year { get; }
 
         public Zone(
-            string threeLetterCode, 
-            string zoneName, 
-            float avgCarbonGridIntensity, 
+            string threeLetterCode,
+            string name,
+            float avgCarbonGridIntensity,
             uint year)
         {
             ThreeLetterCode = threeLetterCode;
-            ZoneName = zoneName;
+            Name = name;
             AverageCarbonGridIntensity = avgCarbonGridIntensity;
             Year = year;
         }

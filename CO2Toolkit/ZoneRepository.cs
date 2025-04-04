@@ -133,7 +133,6 @@ namespace CO2Toolkit
                 { "NZL", new Zone("NZL", "New Zealand", 104.42f, 2023) },
                 { "NIC", new Zone("NIC", "Nicaragua", 288.33f, 2023) },
                 { "NGA", new Zone("NGA", "Nigeria", 508.82f, 2023) },
-                { "NIU", new Zone("NIU", "Niue", 0.00f, 2022) },
                 { "MKD", new Zone("MKD", "North Macedonia", 568.97f, 2024) },
                 { "NOR", new Zone("NOR", "Norway", 30.75f, 2024) },
                 { "OMN", new Zone("OMN", "Oman", 545.88f, 2023) },
@@ -195,6 +194,9 @@ namespace CO2Toolkit
                 { "ZMB", new Zone("ZMB", "Zambia", 111.00f, 2023) },
                 { "ZWE", new Zone("ZWE", "Zimbabwe", 298.44f, 2023) },
             };
+
+        public static IEnumerable<string> AvailableCountryIsoCodes
+            = _isoCodeZoneMap.Keys;
 
         // World
         public static Zone World2000 = new Zone(string.Empty, "World", 527.27f, 2000);
@@ -344,7 +346,6 @@ namespace CO2Toolkit
         public static Zone NewZealand = _isoCodeZoneMap["NZL"];
         public static Zone Nicaragua = _isoCodeZoneMap["NIC"];
         public static Zone Nigeria = _isoCodeZoneMap["NGA"];
-        public static Zone Niue = _isoCodeZoneMap["NIU"];
         public static Zone NorthMacedonia = _isoCodeZoneMap["MKD"];
         public static Zone Norway = _isoCodeZoneMap["NOR"];
         public static Zone Oman = _isoCodeZoneMap["OMN"];
@@ -406,10 +407,10 @@ namespace CO2Toolkit
         public static Zone Zambia = _isoCodeZoneMap["ZMB"];
         public static Zone Zimbabwe = _isoCodeZoneMap["ZWE"];
 
-        public static bool ContryIsAvailable(string isoCode) 
+        public static bool ContryIsAvailable(string isoCode)
             => _isoCodeZoneMap.ContainsKey(isoCode);
 
-        public static Zone GetCountryByCode(string isoCode) 
+        public static Zone GetCountryByCode(string isoCode)
             => _isoCodeZoneMap[isoCode];
     }
 }

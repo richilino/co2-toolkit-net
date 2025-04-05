@@ -19,9 +19,10 @@ All types of contributions are encouraged and valued. See the [Table of Contents
   - [I Want To Contribute](#i-want-to-contribute)
   - [Reporting Bugs](#reporting-bugs)
   - [Suggesting Enhancements](#suggesting-enhancements)
-- [Conventions](#conventions)
+- [Guidelines](#guidelines)
   - [Commit Messages](#commit-messages)
   - [Commit Signing](#commit-signing)
+  - [Versioning](#versioning)
 
 ## I Have a Question
 
@@ -102,7 +103,7 @@ Enhancement suggestions are tracked as [GitHub issues](https://github.com/richil
 - **Describe the current behavior** and **explain which behavior you expected to see instead** and why. At this point you can also tell which alternatives do not work for you.
 - **Explain why this enhancement would be useful** to most CO2 Toolkit for DotNet users. You may also want to point out the other projects that solved it better and which could serve as inspiration.
 
-## Conventions
+## Guidelines
 
 ### Commit Messages
 
@@ -125,6 +126,14 @@ fix(login): resolve login bug
 ### Commit Signing
 
 For security, we use [signed commits](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits). Signed commits will be marked as "Verified" on GitHub.
+
+### Versioning
+
+> ### NOTE 
+>
+> Major version zero (0.y.z) is for initial development. Anything MAY change at any time. The public API SHOULD NOT be considered stable.
+
+This repository follows [Semantic Versioning 2.0](https://semver.org/spec/v2.0.0.html) (SemVer) for version control. Please ensure compatibility when updating dependencies or submitting pull requests.
 
 ## Attribution
 

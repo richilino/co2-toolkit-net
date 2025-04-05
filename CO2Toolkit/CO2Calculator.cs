@@ -1,6 +1,7 @@
-﻿namespace CO2Toolkit
-{
+﻿using System;
 
+namespace CO2Toolkit
+{
     // Using the Sustainable WebDesign Model V4
     // from https://sustainablewebdesign.org/estimating-digital-emissions/
     public sealed class CO2Calculator
@@ -25,14 +26,14 @@
         private readonly Zone _zone;
 
         public CO2Calculator(
-            double greenHostingFactor = 0, 
-            double newVisitorRatio = 1, 
+            double greenHostingFactor = 0,
+            double newVisitorRatio = 1,
             double dataCacheRatio = 0,
             Zone zone = null)
         {
-            _greenHostingFactor = greenHostingFactor;
-            _newVisitorRatio = newVisitorRatio;
-            _dataCacheRatio = dataCacheRatio;
+            _greenHostingFactor = Clamp(greenHostingFactor, min: 0, max: 1);
+            _newVisitorRatio = Clamp(newVisitorRatio, min: 0, max: 1);
+            _dataCacheRatio = Clamp(dataCacheRatio, min: 0, max: 1);
             _zone = zone ?? ZoneRepository.World2023;
         }
 
@@ -61,13 +62,12 @@
         }
 
         private double CalculateOperationalEmissions(double gigabytes, double energyIntensity)
-        {
-            return gigabytes * energyIntensity * _zone.AverageCarbonGridIntensity;
-        }
+            => gigabytes * energyIntensity * _zone.AverageCarbonGridIntensity;
 
         private double CalculateEmbodiedEmissions(double gigabytes, double energyIntensity)
-        {
-            return gigabytes * energyIntensity * GLOBAL_CARBON_INTENSITY_2021;
-        }
+            => gigabytes * energyIntensity * GLOBAL_CARBON_INTENSITY_2021;
+
+        private double Clamp(double value, double min, double max)
+            => Math.Max(Math.Min(value, max), min);
     }
 }

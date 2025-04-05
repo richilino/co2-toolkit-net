@@ -5,9 +5,11 @@ name: Build
 
 on:
   push:
-    branches: [ "master" ]
+    branches: 
+      - "*"
   pull_request:
-    branches: [ "master" ]
+    branches: 
+      - "master"
 
 permissions:  # added using https://github.com/step-security/secure-repo
   contents: read

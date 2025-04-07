@@ -37,6 +37,9 @@ namespace CO2Toolkit
             _zone = zone ?? ZoneRepository.World2023;
         }
 
+        public double KilowattHoursToEmission(double kWh)
+            => kWh * _zone.AverageCarbonGridIntensity;
+
         public double BytesToEmission(long bytesTransferred)
         {
             var gigabytesTransferred = bytesTransferred / 1_073_741_824.0;

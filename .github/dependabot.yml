@@ -14,7 +14,7 @@ updates:
           - "*"
     # Enable version updates for nuget 
   - package-ecosystem: "nuget"
-    directory: “/” 
+    directory: "**/*" 
     schedule:
       interval: "weekly"
     commit-message:

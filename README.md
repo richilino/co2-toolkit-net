@@ -48,7 +48,6 @@ var co2Calculator = new CO2Calculator(
     );
 ```
 
-
 If you need a more accurate calculation based on a certain geography, check if your desired region is available in the `ZoneRepository`. This will change the CO2 intensity for the _Operational Energy_ needed to transfer data.
 
 ```csharp
@@ -63,6 +62,13 @@ var emissions = co2Calculator.BytesToEmission(bytesTransferred);
 
 Console.WriteLine($"Estimated CO2e emissions: {emissions} grams (${ZoneRepository.Germany.Name}, ${ZoneRepository.Germany.Year})");
 ```
+
+### Documentation
+
+Read about these features and more in our [documentation](https://github.com/richilino/co2-toolkit-net/wiki):
+* Simple Emission Calculation
+* Zones with Custom Energy Mix
+* more coming soon...
 
 ## Provenance
 

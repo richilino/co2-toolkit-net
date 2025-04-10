@@ -4,6 +4,18 @@ namespace CO2Toolkit.Tests
 {
     public class CO2CalculatorTests
     {
+
+        [Test]
+        public void TestEmissionsFromKilowattHours()
+        {
+            var calculator = new CO2Calculator(zone: ZoneRepository.World2021);
+
+            var kWhConsumed = 1000;
+            var result = calculator.KilowattHoursToEmission(kWhConsumed);
+
+            result.Should().BeApproximately(494_700, 0.1);
+        }
+
         [Test]
         public void TestEmissionsWithNoBytes()
         {

@@ -37,9 +37,16 @@ namespace CO2Toolkit
             _zone = zone ?? ZoneRepository.World2023;
         }
 
+        /// <summary>
+        /// Determine the carbon emissions (gCO2e) resulting from the consumption of a certain amount of electricity.
+        /// Note that the result will only give you operational emissions!
+        /// </summary>
         public double KilowattHoursToEmission(double kWh)
             => kWh * _zone.AverageCarbonGridIntensity;
 
+        /// <summary>
+        /// Determine the carbon emissions (gCO2e) resulting from the consumption of digital content.
+        /// </summary>
         public double BytesToEmission(long bytesTransferred)
         {
             var gigabytesTransferred = bytesTransferred / 1_073_741_824.0;

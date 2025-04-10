@@ -44,7 +44,7 @@ jobs:
     - name: Generate SBOM from deps.json
       uses: anchore/sbom-action@f325610c9f50a54015d37c8d16cb3b0e2c8f4de0 # v0.18.0
       with:
-        path: CO2Toolkit/bin/Release/netstandard2.0/CO2Toolkit.deps.json
+        file: CO2Toolkit/bin/Release/netstandard2.0/CO2Toolkit.deps.json
         format: 'spdx-json'
         artifact-name: "co2-toolkit-net.spdx.json"
         output-file: "${{ github.workspace }}/co2-toolkit-net.spdx.json"

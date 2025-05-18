@@ -69,7 +69,13 @@ jobs:
         path: CO2Toolkit/bin/Release/*.nupkg
         name: CO2Toolkit NuGet
 
-    - uses: actions/attest-sbom@115c3be05ff3974bcbd596578934b3f9ce39bf68 # v2.2.0
+    - name: Attest Build
+      uses: actions/attest-build-provenance@db473fddc028af60658334401dc6fa3ffd8669fd # v2.3.0
+      with:
+        subject-path: 'CO2Toolkit/bin/Release/*.nupkg'
+
+    - name: Attest SBOM
+      uses: actions/attest-sbom@115c3be05ff3974bcbd596578934b3f9ce39bf68 # v2.2.0
       with:
         subject-path: 'CO2Toolkit/bin/Release/*.nupkg'
         sbom-path: "${{ github.workspace }}/co2-toolkit-net.spdx.json"

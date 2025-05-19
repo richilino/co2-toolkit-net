@@ -51,19 +51,6 @@ jobs:
         upload-artifact: true
         upload-release-assets: true
 
-    - name: Upload build artifact
-      id: upload
-      uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
-      with:
-        path: CO2Toolkit/bin/Release/*.nupkg
-        name: CO2Toolkit NuGet
-
-    - name: Attest Build and SBOM
-      uses: richilino/gh-workflows/.github/workflows/sign-artifact-with-sbom.yaml@fb119043840c375408a4d1edae770803848082b3 # v0.1.0
-      with:
-        subject-name: 'CO2Toolkit/bin/Release/*.nupkg'
-        sbom-path: "${{ github.workspace }}/co2-toolkit-net.spdx.json"
-
     - name: Extract release notes
       id: extract-release-notes
       uses: ffurrer2/extract-release-notes@cae32133495112d23e3569ad04fef240ba4e7bc8 # v2.3.0
@@ -72,10 +59,26 @@ jobs:
       uses: softprops/action-gh-release@da05d552573ad5aba039eaac05058a918a7bf631 # v2.2.2
       if: startsWith(github.ref, 'refs/tags/')
       with:
-        files: |
-          CO2Toolkit/bin/Release/*.nupkg
-          ${{ github.workspace }}/co2-toolkit-net.spdx.json
+        files: CO2Toolkit/bin/Release/*.nupkg
         body: ${{ steps.extract-release-notes.outputs.release_notes }}
+
+    - name: Upload build artifact
+      id: upload
+      uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+      with:
+        path: CO2Toolkit/bin/Release/*.nupkg
+        name: CO2Toolkit NuGet
+
+    - name: Attest Build
+      uses: actions/attest-build-provenance@db473fddc028af60658334401dc6fa3ffd8669fd # v2.3.0
+      with:
+        subject-path: 'CO2Toolkit/bin/Release/*.nupkg'
+
+    - name: Attest SBOM
+      uses: actions/attest-sbom@115c3be05ff3974bcbd596578934b3f9ce39bf68 # v2.2.0
+      with:
+        subject-path: 'CO2Toolkit/bin/Release/*.nupkg'
+        sbom-path: "${{ github.workspace }}/co2-toolkit-net.spdx.json"
     
     - name: Publish the package to nuget.org
       run: dotnet nuget push CO2Toolkit/bin/Release/*.nupkg -k $NUGET_AUTH_TOKEN --skip-duplicate

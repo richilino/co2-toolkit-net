@@ -75,12 +75,12 @@ Read about these features and more in our [documentation](https://github.com/ric
 Released package attestations can be verified using the GitHub CLI. Adjust the package name and execute the command below in the directory where the .nupkg is located.
 
 ```bash
-gh attestation verify CO2Toolkit.X.X.X.nupkg --owner richilino
+gh attestation verify CO2Toolkit.X.X.X.nupkg --owner richilino --signer-workflow richilino/gh-workflows/.github/workflows/sign-artifact-with-sbom.yaml
 ```
 Package SBOM attestations can be verified by adjusting the predicate type.
 
 ```bash
-gh attestation verify CO2Toolkit.X.X.X.nupkg --owner richilino --predicate-type https://spdx.dev/Document/v2.3 
+gh attestation verify CO2Toolkit.X.X.X.nupkg --owner richilino --signer-workflow richilino/gh-workflows/.github/workflows/sign-artifact-with-sbom.yaml --predicate-type https://spdx.dev/Document/v2.3 
 ```
 For more detailed attested SBOM information, pass the `--format json` argument as well.
 

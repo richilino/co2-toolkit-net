@@ -42,7 +42,7 @@ jobs:
       run: dotnet pack CO2Toolkit/CO2Toolkit.sln --configuration Release
 
     - name: Generate SBOM from deps.json
-      uses: anchore/sbom-action@9246b90769f852b3a8921f330c59e0b3f439d6e9 # v0.20.1
+      uses: anchore/sbom-action@cee1b8e05ae5b2593a75e197229729eabaa9f8ec # v0.20.2
       with:
         file: CO2Toolkit/bin/Release/netstandard2.0/CO2Toolkit.deps.json
         format: 'spdx-json'

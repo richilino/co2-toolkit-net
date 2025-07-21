@@ -23,7 +23,7 @@ jobs:
       packages: write
     steps:
     - name: Harden the runner (Audit all outbound calls)
-      uses: step-security/harden-runner@6c439dc8bdf85cadbbce9ed30d1c7b959517bc49 # v2.12.2
+      uses: step-security/harden-runner@ec9f2d5744a09debf3a187a3f4f675c53b671911 # v2.13.0
       with:
         egress-policy: audit
         
@@ -42,7 +42,7 @@ jobs:
       run: dotnet pack CO2Toolkit/CO2Toolkit.sln --configuration Release
 
     - name: Generate SBOM from deps.json
-      uses: anchore/sbom-action@cee1b8e05ae5b2593a75e197229729eabaa9f8ec # v0.20.2
+      uses: anchore/sbom-action@7b36ad622f042cab6f59a75c2ac24ccb256e9b45 # v0.20.4
       with:
         file: CO2Toolkit/bin/Release/netstandard2.0/CO2Toolkit.deps.json
         format: 'spdx-json'

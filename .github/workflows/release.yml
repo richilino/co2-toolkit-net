@@ -23,7 +23,7 @@ jobs:
       packages: write
     steps:
     - name: Harden the runner (Audit all outbound calls)
-      uses: step-security/harden-runner@f4a75cfd619ee5ce8d5b864b0d183aff3c69b55a # v2.13.1
+      uses: step-security/harden-runner@95d9a5deda9de15063e7595e9719c11c38c90ae2 # v2.13.2
       with:
         egress-policy: audit
         
@@ -42,7 +42,7 @@ jobs:
       run: dotnet pack CO2Toolkit/CO2Toolkit.sln --configuration Release
 
     - name: Generate SBOM from deps.json
-      uses: anchore/sbom-action@aa0e114b2e19480f157109b9922bda359bd98b90 # v0.20.8
+      uses: anchore/sbom-action@8e94d75ddd33f69f691467e42275782e4bfefe84 # v0.20.9
       with:
         file: CO2Toolkit/bin/Release/netstandard2.0/CO2Toolkit.deps.json
         format: 'spdx-json'
@@ -56,7 +56,7 @@ jobs:
       uses: ffurrer2/extract-release-notes@cae32133495112d23e3569ad04fef240ba4e7bc8 # v2.3.0
 
     - name: Create Release with Latest Changelog
-      uses: softprops/action-gh-release@6da8fa9354ddfdc4aeace5fc48d7f679b5214090 # v2.4.1
+      uses: softprops/action-gh-release@5be0e66d93ac7ed76da52eca8bb058f665c3a5fe # v2.4.2
       if: startsWith(github.ref, 'refs/tags/')
       with:
         files: CO2Toolkit/bin/Release/*.nupkg
@@ -64,7 +64,7 @@ jobs:
 
     - name: Upload build artifact
       id: upload
-      uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+      uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
       with:
         path: CO2Toolkit/bin/Release/*.nupkg
         name: CO2Toolkit NuGet

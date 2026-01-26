@@ -23,15 +23,15 @@ jobs:
       packages: write
     steps:
     - name: Harden the runner (Audit all outbound calls)
-      uses: step-security/harden-runner@20cf305ff2072d973412fa9b1e3a4f227bda3c76 # v2.14.0
+      uses: step-security/harden-runner@e3f713f2d8f53843e71c69a996d56f51aa9adfb9 # v2.14.1
       with:
         egress-policy: audit
         
     - name: Checkout Code
-      uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
     
     - name: Setup .NET
-      uses: actions/setup-dotnet@2016bd2012dba4e32de620c46fe006a3ac9f0602 # v5.0.1
+      uses: actions/setup-dotnet@baa11fbfe1d6520db94683bd5c7a3818018e4309 # v5.1.0
       with:
         dotnet-version: 8.0.x
 
@@ -42,7 +42,7 @@ jobs:
       run: dotnet pack CO2Toolkit/CO2Toolkit.sln --configuration Release
 
     - name: Generate SBOM from deps.json
-      uses: anchore/sbom-action@0b82b0b1a22399a1c542d4d656f70cd903571b5c # v0.21.1
+      uses: anchore/sbom-action@62ad5284b8ced813296287a0b63906cb364b73ee # v0.22.0
       with:
         file: CO2Toolkit/bin/Release/netstandard2.0/CO2Toolkit.deps.json
         format: 'spdx-json'
@@ -70,7 +70,7 @@ jobs:
         name: CO2Toolkit NuGet
 
     - name: Attest Build
-      uses: actions/attest-build-provenance@00014ed6ed5efc5b1ab7f7f34a39eb55d41aa4f8 # v3.1.0
+      uses: actions/attest-build-provenance@96278af6caaf10aea03fd8d33a09a777ca52d62f # v3.2.0
       with:
         subject-path: 'CO2Toolkit/bin/Release/*.nupkg'
 

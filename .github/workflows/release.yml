@@ -23,7 +23,7 @@ jobs:
       packages: write
     steps:
     - name: Harden the runner (Audit all outbound calls)
-      uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
+      uses: step-security/harden-runner@1d88384fd173af6ecb012dfd0264a306b711241a # v2.22.4
       with:
         egress-policy: audit
         
@@ -31,7 +31,7 @@ jobs:
       uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
     
     - name: Setup .NET
-      uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+      uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73 # v6.1.0
       with:
         dotnet-version: 8.0.x
 
@@ -42,7 +42,7 @@ jobs:
       run: dotnet pack CO2Toolkit/CO2Toolkit.sln --configuration Release
 
     - name: Generate SBOM from deps.json
-      uses: anchore/sbom-action@3ad7283483fc7af8ff2b4ea19663c2d5ca935e26 # v0.24.2
+      uses: anchore/sbom-action@66cbf4bc1f1c0d2edc94016e65bc221b6bb0ad6c # v0.24.3
       with:
         file: CO2Toolkit/bin/Release/netstandard2.0/CO2Toolkit.deps.json
         format: 'spdx-json'
@@ -56,7 +56,7 @@ jobs:
       uses: ffurrer2/extract-release-notes@273da39a24fb7db106a35526c8162815faffd31d # v3.1.0
 
     - name: Create Release with Latest Changelog
-      uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3.0.3
+      uses: softprops/action-gh-release@8a0cd651e5b2365bd640854a3fa5dfc70e4875f3 # v3.0.4
       if: startsWith(github.ref, 'refs/tags/')
       with:
         files: CO2Toolkit/bin/Release/*.nupkg
@@ -64,7 +64,7 @@ jobs:
 
     - name: Upload build artifact
       id: upload
-      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
       with:
         path: CO2Toolkit/bin/Release/*.nupkg
         name: CO2Toolkit NuGet
